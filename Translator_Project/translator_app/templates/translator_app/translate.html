@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translator</title>
+    <style>
+        div{
+            padding-left : 200px;
+            border : 50px solid green;
+            margin : 100px;
+            background-color : lightgreen;
+            border-radius : 30px;}
+        body{
+            margin-right : 150px;
+            margin-left :  100px;
+            background-color : lightblue;
+        }
+        button{
+              border-radius : 8px;
+              background-color: black;
+              color : white;
+              cursor : pointer;
+               }
+    </style>
+</head>
+<body>
+<center><h1>Django Translator Website</h1></center>
+<div>
+    <form method="post">
+        {% csrf_token %}
+        <label for="original_text">Enter Text To Translate:</label><br>
+        <textarea id="original_text" name="original_text" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="language_from">Language from:</label>
+        <input type="text" id="language_from" name="language_from" required><br><br>
+
+        <label for="language_to">Language to:</label>
+        <input type="text" id="language_to" name="language_to" required><br><br>
+
+        <button type="submit">Translate</button>
+    </form>
+
+    {% if translation %}
+        <h2>Translation Result:</h2>
+        <p>{{ translation.original_text }} -> {{ translation.translated_text }}</p>
+    {% endif %}
+</div>
+</body>
+</html>
